@@ -1,5 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project basedir="." name="POS" default="build">
 
+	<!-- Dir. definitioonid -->
+	<property file="build.properties"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="build.classes.dir" value="${build.dir}/classes"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="conf.dir" value="${basedir}/etc"/>
+	<property name="doc.dir" value="${build.dir}/doc"/>
+	<property name="test.reports.dir" value="${build.dir}/reports/"/>
+	
+<!-- Definitions of classpath variants used for different tasks -->
+	<path id="compile.classpath">
+		<fileset dir="lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<path id="test.classpath">
+		<pathelement location="${build.classes.dir}"/>
+		<!-- configuration -->
+		<pathelement location="${conf.dir}"/>
+		<fileset dir="lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+<!-- Definitions of runnable ant targets.
+         Run them from the command line by executing "ant [targetname]"  -->
+		
+	<!-- Clean up previous build system results -->
+	<target name="clean" description="Clean up build system results">
+		<delete dir="${build.dir}"/>
+	</target>
+	
+
+	<target name="build" description="Build the system">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.classes.dir}"/>
+		<javac
+            srcdir="${src.dir}"
+            destdir="${build.classes.dir}"
+            debug="true"
+            debuglevel="lines,vars,source"
+            encoding="utf-8"
+            compiler="modern"
+            target="1.7"
+            source="1.7"
+			includeantruntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="run" depends="build" description="executes your application via class Intro">
+		<java classname="Intro" classpathref="test.classpath" fork="yes" />
+	</target>
+	
+	<!--creates in the folder build/jar a separate JAR file, that has all your created classes, 
+	two property files and other components that are required for running your intro window. 
+	The name of the JAR file must be your team name. In addition, with every new JAR file build,
+	 your build.revision.number must increase automatically by one and  as a result build.number 
+	 last part must also increase by one.  -->
+ 	 <target name="dist">
+    	<jar destfile="${dist.dir}\POS.jar" basedir="${build.dir}">
+      		<manifest>
+        	<attribute name="Intro" value="ee.ut.math.tvt.EpicTiim.main" />
+      		<attribute name="IntroUI" value="ee.ut.math.tvt.EpicTiim.main" />
+        	<attribute name="main" value="ee.ut.math.tvt.EpicTiim.main" />
+      		</manifest>
+   	 	</jar>
+ 	 </target>
+	
+	<target name="jrun" depends="build" description="opens intro window using the JAR 
+		file created by your dist ANT target">
+	</target>
+	
 </project>
 
+
+
+	
