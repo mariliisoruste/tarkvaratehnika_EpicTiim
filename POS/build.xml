@@ -63,7 +63,8 @@
 	The name of the JAR file must be your team name. In addition, with every new JAR file build,
 	your build.revision.number must increase automatically by one and  as a result build.number 
 	last part must also increase by one.  -->
- 	 <target name="dist", depends="build">
+	
+ 	 <target name="dist" depends="build">
     	<jar destfile="${dist.dir}/POS.jar" basedir="${build.dir}">
       		<manifest>
         	<attribute name="Intro" value="ee.ut.math.tvt.EpicTiim.main" />
