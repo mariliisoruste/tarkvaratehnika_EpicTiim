@@ -3,13 +3,15 @@ package ee.ut.math.tvt.EpicTiim;
 import java.awt.*;
 import java.io.IOException;
  
-//import org.apache.log4j.Logger;
+
+import org.apache.log4j.Logger;
  
+
 import javax.swing.*;
 
 public class Intro {
 	
-   // private static final Logger log = Logger.getLogger(Intro.class);
+    private static final Logger log = Logger.getLogger(Intro.class);
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -18,10 +20,10 @@ public class Intro {
                 try {
                     DrawInterfaceXDisplayInterface();
                 } catch (IOException e) {
-                  //  log.error("IO problem.", e);
+                    log.error("IO problem.", e);
                     throw new RuntimeException(e);
                 } catch (Throwable t) {
-                   // log.error("Something went wrong.", t);
+                    log.error("Something went wrong.", t);
                     throw t;
                 }
             }
