@@ -45,8 +45,8 @@ public class Intro {
 		intro.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         intro.setVisible(true);
         
-        // I (personally) couldn't fix logger, but this line of code would need to be here:
-        // log.info("Success.");
+         
+         log.info("Success.");
 		
 	}
 	}
