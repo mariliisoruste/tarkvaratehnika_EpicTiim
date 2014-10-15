@@ -70,12 +70,12 @@ public class IntroUI extends JFrame {
         LoadProperties(properties, "application.properties"); // used to read data from app.prop.
         
         teamLeader.setText("Team leader: " + properties.getProperty("Leader"));
-        teamLeaderEmail.setText("Team leader email: " + properties.getProperty("Email"));
+        teamLeaderEmail.setText("Team leader email: " + properties.getProperty("E-mail"));
         teamName.setText("Team name: " + properties.getProperty("Name"));
         teamMembers.setText("Team members: " + properties.getProperty("Members"));
         
         LoadProperties(properties, "version.properties");
-        VersionOfBuild.setText("Version: " + properties.getProperty("VersionOfBuild"));
+        VersionOfBuild.setText("Version: " + properties.getProperty("build.number"));
         
 }
     private void LoadProperties(Properties properties, String filename) throws IOException {
