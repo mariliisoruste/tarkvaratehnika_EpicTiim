@@ -67,14 +67,14 @@ public class IntroUI extends JFrame {
     private void fillFields() throws IOException {
     	 
         Properties properties = new Properties();
-        //LoadProperties(properties, "application.properties"); // used to read data from app.prop.
+        LoadProperties(properties, "application.properties"); // used to read data from app.prop.
         
         teamLeader.setText("Team leader: " + properties.getProperty("Leader"));
         teamLeaderEmail.setText("Team leader email: " + properties.getProperty("Email"));
         teamName.setText("Team name: " + properties.getProperty("Name"));
         teamMembers.setText("Team members: " + properties.getProperty("Members"));
         
-        //LoadProperties(properties, "version.properties");
+        LoadProperties(properties, "version.properties");
         VersionOfBuild.setText("Version: " + properties.getProperty("VersionOfBuild"));
         
 }
